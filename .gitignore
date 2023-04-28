@@ -6,3 +6,6 @@
 *zkey
 **/*_cpp*/
 **/*_js*/
+
+yarn.lock
+node_modules
