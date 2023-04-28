@@ -1,3 +1,4 @@
+// https://docs.circom.io/getting-started/writing-circuits/
 pragma circom 2.0.0;
 
 template Multiplier2() {
