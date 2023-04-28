@@ -2,11 +2,9 @@
 pragma circom 2.0.0;
 
 template Multiplier2() {
-    signal input a;
-    signal input b;
-    signal output c;
+    signal input in1;
+    signal input in2;
+    signal output out;
 
-    c <== a * b;
+    out <== in1 * in2;
 }
-
-component main = Multiplier2();
