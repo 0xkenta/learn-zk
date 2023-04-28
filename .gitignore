@@ -1,0 +1,8 @@
+*.json
+*.wtns
+*.ptau
+*.sym
+*r1cs
+*zkey
+**/*_cpp*/
+**/*_js*/
