@@ -22,4 +22,4 @@ template CheckInRange() {
     isLessEqThan.out * isGreaterEqThan.out === 1;
 }
 
-component main = CheckInRange();
+component main {public [upperRange, lowerRange]} = CheckInRange();
