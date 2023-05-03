@@ -3,7 +3,7 @@ pragma circom 2.0.0;
 include "../node_modules/circomlib/circuits/comparators.circom";
 include "../node_modules/circomlib/circuits/gates.circom";
 
-template UseLib1() {
+template CheckIsEqaul() {
     signal input in1;
     signal input in2;
     signal input in3;
