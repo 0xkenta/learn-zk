@@ -5,14 +5,14 @@ include "../node_modules/circomlib/circuits/poseidon.circom";
 
 template poseidonHasher(n) {
     signal input in[n];
-    signal output out;
+    signal input hash;
 
     component poseidon = Poseidon(n);
     for(var i = 0; i < n; i++){
         poseidon.inputs[i] <== in[i];
     }
 
-    out <== poseidon.out;
+    hash === poseidon.out;
 }
 
-component main = poseidonHasher(3);
+component main{public [hash]} = poseidonHasher(3);
