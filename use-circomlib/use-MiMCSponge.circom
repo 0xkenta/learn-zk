@@ -8,14 +8,12 @@ template Hasher() {
     signal input in1;
     signal output out;
 
-    component pedersen = Pedersen(248);
-    component bits = Num2Bits(248);
-    bits.in <== in1;
-    for (var i = 0; i < 248; i++) {
-        pedersen.in[i] <== bits.out[i];
-    }
+    component mimc = MiMCSponge(1, 220, 1);
+    
+    mimc.ins[0] <== in1;
+    mimc.k <== 0;
 
-    out <== pedersen.out[0];
+    out <== mimc.outs[0];
 }
 
 template Check() {
