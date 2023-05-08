@@ -22,8 +22,6 @@ template Check() {
 
     component comp = Hasher();
     comp.in1 <== in1;
-    log(comp.out);
-    log(hash);
 
     hash === comp.out;
 }
