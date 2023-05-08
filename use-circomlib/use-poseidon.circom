@@ -3,7 +3,7 @@ pragma circom 2.0.0;
 
 include "../node_modules/circomlib/circuits/poseidon.circom";
 
-template poseidonHasher(n) {
+template PoseidonHasher(n) {
     signal input in[n];
     signal input hash;
 
@@ -15,4 +15,4 @@ template poseidonHasher(n) {
     hash === poseidon.out;
 }
 
-component main{public [hash]} = poseidonHasher(3);
+component main{public [hash]} = PoseidonHasher(3);
