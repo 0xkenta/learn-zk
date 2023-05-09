@@ -1,3 +1,5 @@
+// modified https://github.com/darkforest-eth/darkforest-v0.6/blob/main/circuits/perlin/perlin.circom
+
 pragma circom 2.0.0;
 
 template Dot(DENOMINATOR, LENGTH) {
@@ -27,8 +29,7 @@ template Main(DENOMINATOR, LENGTH) {
         dot.in1[i] <== in1[i];
         dot.in2[i] <== in2[i];
     }
-    log(dot.out);
-    log(expected);
+    
     dot.out === expected;
 }
 
