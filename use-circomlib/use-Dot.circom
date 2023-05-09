@@ -13,8 +13,7 @@ template Dot(DENOMINATOR, LENGTH) {
         sum += prod[i];    
     }
 
-    out <-- sum / DENOMINATOR;
-    sum === out * DENOMINATOR;
+    out <-- sum;
 }
 
 template Main(DENOMINATOR, LENGTH) {
