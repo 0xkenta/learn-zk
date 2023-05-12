@@ -4,18 +4,25 @@ import { poseidon1 } from "poseidon-lite/poseidon1"
 import { poseidon2 } from "poseidon-lite/poseidon2"
 import fs from 'fs';
 
+const circomlibjs = require("circomlibjs")
+
 function getRandom(numberOfBytes = 31): bigint {
     return BigNumber.from(randomBytes(numberOfBytes)).toBigInt();
 }
 
-function main() {
+async function main() {
     console.log("start creating the input file");
 
     const nullifier = getRandom();
     const trapdoor = getRandom();
 
-    const secret = poseidon2([nullifier, trapdoor]);
-    const commitment = poseidon1([secret]);
+    // const secret = poseidon2([nullifier, trapdoor]);
+    // const commitment = poseidon1([secret]);
+
+    const poseidon = await circomlibjs.buildPoseidon();
+    const secret = poseidon.F.toString(poseidon([nullifier, trapdoor]));
+    
+    const commitment = poseidon.F.toString(poseidon([secret]))
     
     const input = {
         nullifier: nullifier.toString(),
