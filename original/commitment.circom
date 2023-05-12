@@ -7,7 +7,7 @@ include "../node_modules/circomlib/circuits/poseidon.circom";
 template Main() {
     signal input nullifier;
     signal input trapdoor;
-    signal output out;
+    signal input out;
 
     component poseidon1 = Poseidon(2);
     component poseidon2 = Poseidon(1);
@@ -20,4 +20,4 @@ template Main() {
     out === poseidon2.out;
 }
 
-component main{public [trapdoor]} = Main();
+component main{public [out]} = Main();
