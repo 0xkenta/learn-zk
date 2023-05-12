@@ -10,19 +10,20 @@ function getRandom(numberOfBytes = 31): bigint {
     return BigNumber.from(randomBytes(numberOfBytes)).toBigInt();
 }
 
+async function getPoseidonHash(params: bigint[]): Promise<bigint> {
+    const poseidon = await circomlibjs.buildPoseidon();
+    return poseidon.F.toString(poseidon(params));
+}
+
 async function main() {
     console.log("start creating the input file");
 
     const nullifier = getRandom();
     const trapdoor = getRandom();
 
-    // const secret = poseidon2([nullifier, trapdoor]);
-    // const commitment = poseidon1([secret]);
-
-    const poseidon = await circomlibjs.buildPoseidon();
-    const secret = poseidon.F.toString(poseidon([nullifier, trapdoor]));
     
-    const commitment = poseidon.F.toString(poseidon([secret]))
+    const secret = await getPoseidonHash([nullifier, trapdoor])
+    const commitment = await getPoseidonHash([secret])
     
     const input = {
         nullifier: nullifier.toString(),
