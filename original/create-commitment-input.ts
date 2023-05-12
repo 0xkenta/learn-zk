@@ -11,16 +11,16 @@ function getRandom(numberOfBytes = 31): bigint {
 function main() {
     console.log("start creating the input file");
 
-    const nullfier = getRandom();
+    const nullifier = getRandom();
     const trapdoor = getRandom();
 
-    const secret = poseidon2([nullfier, trapdoor]);
+    const secret = poseidon2([nullifier, trapdoor]);
     const commitment = poseidon1([secret]);
     
     const input = {
-        nullfier,
-        trapdoor,
-        out: commitment
+        nullifier: nullifier.toString(),
+        trapdoor: trapdoor.toString(),
+        out: commitment.toString()
     };
 
     const jsonInput = JSON.stringify(input);
